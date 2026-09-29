@@ -17,6 +17,14 @@ export const supabase = isSupabaseConfigured
   ? createClient(supabaseUrl, supabaseAnonKey)
   : null;
 
+// Debug: log configuration (mask key for security)
+if (isSupabaseConfigured) {
+  console.log('🔧 Supabase config:', {
+    url: supabaseUrl,
+    anonKey: supabaseAnonKey ? supabaseAnonKey.slice(0, 8) + '...' : 'missing'
+  });
+}
+
 if (isSupabaseConfigured) {
   console.log('🌸 Conexión activa con Supabase inicializada con éxito.');
 } else {
